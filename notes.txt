@@ -1,0 +1,26 @@
+Noticed Details
+1) There is no Null Values in train.csv or test.csv. We do not need to purge any data 
+2) Some comments have random numbers at the end of the message [ie: .89.205.38.27]
+   and during preprocessing it merges with the word next to it. This is a potential
+   concern => this may cause unwanted "spelling errors" that may not get removed during
+   the data cleaning.
+3) Results of the preprocessing needed to be tokenized into numerical values for the Neural network
+   So, I tokenized the preprocessed words into numbers once more.
+   then padded it out so each row was the same array length
+5) The Data Processing is the narrowing down of options for feature selection
+   as it determines what words are worthwhile or can be ignored
+
+
+
+Overfitting Fixes
+1) Early stopping. Applied Early Stopping as a safety measure to prevent overfitting due 
+   being unsure of how many epochs this model needs.    Early Stopping will occur if the 
+   model goes beyond 1 or 2 epoches with no improvements. I have the model set to run 8 epochs;
+   however, it stops on epoch 3 or 4.
+2) Dropout. I utilized dropout in the model to randomly ignore 10% of the neurons in the model
+   during training as to reduce reduce interdependent learning among units.
+3) Keeping the model simple enough with 5 layers (including input and output) to achieve high 
+   performance while keeping the model complexity low enough to not risk potential overfitting.
+4) The limiting the maximum amount of features to 15,000 for the model while performing extensive
+   data cleaning and preprocessing to reduce the word library down to the most significant words
+   that the model would benefit from.
